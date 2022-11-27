@@ -6,11 +6,11 @@ const getLocalSData = () => {
   const data = localStorage.getItem("myItems");
   // myItems is a key
   // console.log(data);
-  if (data === "") { //If data is empty return empty array ;
-    return [];
-  }
-  else { // If data iside localstorage return this data into an array format
+  if (data) { //That means if data inside an data variable
     return JSON.parse(data);
+  }
+  else {
+    return [];
   }
 }
 
