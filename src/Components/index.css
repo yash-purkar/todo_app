@@ -58,15 +58,18 @@ figcaption {
 
 /* show items */
 
+.showItems {
+  margin-bottom: 25px;
+}
+
 .eachItem {
+  border-bottom: 1px solid #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 10px;
-  border-bottom: 1px solid #fff;
+  padding: 10px 5px;
   color: #fff;
-  margin: 0px 20px 25px;
-  width: 190px;
+  margin: 0px 20px 20px;
 }
 
 span {
@@ -79,11 +82,11 @@ span {
 .todo_btn {
   position: absolute;
   right: 35px;
-  /* border: 1px solid wheat; */
 }
 
 .todo_btn .delete {
   color: #ff5151;
+  margin-right: 8px;
 }
 
 .todo_btn .delete:hover {
