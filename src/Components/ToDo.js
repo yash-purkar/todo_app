@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import logo from './Images/to_do.svg';
+import "./index.css"
 
 const ToDo = () => {
   const [inputData, setInputData] = useState("");
@@ -31,47 +32,40 @@ const ToDo = () => {
     <div className='main_div'>
       <div className="child_div">
         <figure>
-          <img src={logo} alt="logo" style={{ width: "100px" }} />
+          <img src={logo} alt="logo" />
           <figcaption>Add your list here👇🏻</figcaption>
         </figure>
 
         <div className="addItems">
           <input type="text" className="form_control"
-            placeholder='✍🏻Additems'
+            placeholder='✍🏻 Add Items'
             value={inputData}
             onChange={(event) => setInputData(event.target.value)} />
 
-          <i className="fa-solid fa-plus" onClick={addItem}></i>
+          <i className="fa-solid fa-plus add" onClick={addItem}></i>
         </div>
         <br />
 
         <div className="showItems">
-          <div className="eachItem">
-            {
-              items.map((currElem, index) => {
-                return <>
-                  <div className="eachItem" key={index}>
-                    <span>{currElem.name}</span>
-                    <div className="todo_btn" style={{ display: "inline", margin: "35px" }}>
-                      <i className="fa-solid fa-pen-to-square" style={{ margin: "10px" }}></i>
-                      <i className="fa-solid fa-trash" onClick={() => deleteItem(currElem.id)}></i>
-                    </div>
+          {
+            items.map((currElem) => {
+              return <>
+                <div className="eachItem" key={currElem.id}>
+                  <span>{currElem.name}</span>
+                  <div className="todo_btn" >
+                    {/* <i className="fa-solid fa-pen-to-square " ></i> */}
+                    <i className="fa-solid fa-trash delete" onClick={() => deleteItem(currElem.id)}></i>
                   </div>
-                  <br />
-                </>
-              })
-            }
-
-          </div>
+                </div>
+              </>
+            })
+          }
         </div>
 
-        <br />
+        <button className='clearLists' onClick={() => setItems([])}>
+          Clear All
+        </button>
 
-        <div className="showItems">
-          <button data-sm-link-text="Remove All">
-            Remove All
-          </button>
-        </div>
       </div>
     </div>
   )

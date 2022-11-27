@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Mulish&family=Noto+Serif:wght@700&family=Open+Sans:wght@300;600&family=Raleway:wght@200;600&display=swap");
+
+body {
+  background-color: #2e0058;
+}
+.main_div {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.child_div {
+  /* width: 50%; */
+  /* border: 1px solid yellow; */
+  margin: 20px auto;
+  text-align: center;
+}
+/* #F9A826 */
+img {
+  width: 125px;
+  margin-bottom: 20px;
+}
+
+figcaption {
+  color: #fff;
+  font-size: 19px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 30px;
+}
+
+.addItems {
+  margin: 0px 25px;
+  border: 1px solid #fff;
+  padding: 4px;
+  margin-bottom: 15px;
+  /* outline: 1px; */
+}
+
+.addItems input {
+  border: none;
+  outline: none;
+  background-color: #2e0058;
+  color: #fff;
+}
+
+.add {
+  color: #fff;
+}
+.add:hover {
+  color: greenyellow;
+  cursor: pointer;
+}
+
+::placeholder {
+  padding: 0px 5px;
+  color: gray;
+  letter-spacing: 2px;
+}
+
+/* show items */
+
+.eachItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  margin: 0px 20px 25px;
+  width: 190px;
+}
+
+span {
+  text-align: start;
+  width: 80%;
+  padding: 3px;
+  word-wrap: break-word;
+}
+
+.todo_btn {
+  position: absolute;
+  right: 35px;
+  /* border: 1px solid wheat; */
+}
+
+.todo_btn .delete {
+  color: #ff5151;
+}
+
+.todo_btn .delete:hover {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clearLists {
+  background-color: #2e0058;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 12px;
+  letter-spacing: 1.5px;
+}
+
+.clearLists:hover {
+  color: #ff5151;
+  cursor: pointer;
+  border: 1px solid red;
+}
