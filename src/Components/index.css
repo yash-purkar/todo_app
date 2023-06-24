@@ -2,6 +2,7 @@
 
 body {
   background-color: #2e0058;
+  letter-spacing: 1px;
 }
 .main_div {
   width: 100%;
@@ -126,18 +127,19 @@ span {
 /* Desktop */
 
 @media only screen and (min-width: 768px) {
-  body {
-    background-color: #2e0058;
-  }
   .main_div {
     width: 100%;
+    font-size: 1.2rem;
     /* margin-top: 50px; */
   }
   .child_div {
     width: 500px;
     margin: 50px auto 0px auto;
   }
-
+  input {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
   .addItems input {
     width: 85%;
     margin-right: 20px;

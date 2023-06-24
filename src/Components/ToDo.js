@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { AiFillDelete } from 'react-icons/ai'
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from './Images/to_do.svg';
 import "./index.css"
 
@@ -15,6 +16,17 @@ const getLocalSData = () => {
   }
 }
 
+const toasts = {
+  success: (msg) => {
+    toast.success(msg)
+  },
+  warning: (msg) => {
+    toast.warning(msg)
+  },
+  delete: (msg) => {
+    toast.error(msg)
+  }
+}
 
 const ToDo = () => {
   const [inputData, setInputData] = useState("");
@@ -23,7 +35,7 @@ const ToDo = () => {
 
   const addItem = () => {
     if (inputData === "") {
-      // alert("Plzz Fill the data.")
+      toasts.warning("Plz Fill the data")
     }
     else {
       if (itemIdToBeEdit) {
@@ -31,6 +43,7 @@ const ToDo = () => {
         setItems(data);
         setITemIdToBeEdit(null)
         setInputData("")
+        toasts.success("Updated Successfully")
       }
       else {
         const newTodo = {
@@ -39,6 +52,7 @@ const ToDo = () => {
         }
         setItems([...items, newTodo])
         setInputData("")
+        toast.success("Added Successfully")
       }
     }
   }
@@ -57,6 +71,7 @@ const ToDo = () => {
       return currElem.id !== id;
     })
     setItems(updatedItems);
+    toasts.delete("Deleted")
   }
 
   useEffect(() => {
@@ -107,6 +122,7 @@ const ToDo = () => {
         </button>
 
       </div>
+      <ToastContainer autoClose={1000} transition={Flip} />
     </div>
   )
 }
