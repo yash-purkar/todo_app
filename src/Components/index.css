@@ -44,7 +44,6 @@ figcaption {
 }
 
 .add {
-  color: #fff;
   color: greenyellow;
 }
 .add:hover {
@@ -55,6 +54,11 @@ figcaption {
   padding: 0px 5px;
   color: gray;
   letter-spacing: 2px;
+}
+
+.update-btn {
+  color: greenyellow;
+  cursor: pointer;
 }
 
 /* show items */
@@ -83,8 +87,17 @@ span {
 .todo_btn {
   position: absolute;
   right: 35px;
+
+  display: flex;
 }
 
+.todo_btn .edit {
+  color: lightgray;
+}
+.todo_btn:hover {
+  color: gray;
+  cursor: pointer;
+}
 .todo_btn .delete {
   color: #ff5151;
   margin-right: 8px;

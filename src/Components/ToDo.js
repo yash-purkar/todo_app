@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { AiFillDelete } from 'react-icons/ai'
 import logo from './Images/to_do.svg';
 import "./index.css"
 
@@ -18,21 +19,39 @@ const getLocalSData = () => {
 const ToDo = () => {
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState(getLocalSData());
+  const [itemIdToBeEdit, setITemIdToBeEdit] = useState(null);
 
   const addItem = () => {
     if (inputData === "") {
-      alert("Plzz Fill the data.")
+      // alert("Plzz Fill the data.")
     }
     else {
-      const myNewData = {
-        id: new Date().getTime().toString(),
-        name: inputData
+      if (itemIdToBeEdit) {
+        const data = items?.map(el => el.id === itemIdToBeEdit ? { ...el, name: inputData } : el)
+        setItems(data);
+        setITemIdToBeEdit(null)
+        setInputData("")
       }
-      setItems([...items, myNewData])
-      setInputData("")
+      else {
+        const newTodo = {
+          id: new Date().getTime().toString(),
+          name: inputData
+        }
+        setItems([...items, newTodo])
+        setInputData("")
+      }
     }
   }
 
+  // edit
+  const editItem = (itemIdToBeEdit) => {
+    setITemIdToBeEdit(itemIdToBeEdit);
+    const itemToBeEdit = items?.find(el => el.id === itemIdToBeEdit);
+    // console.log(itemToBeEdit)
+    setInputData(itemToBeEdit?.name)
+  }
+
+  // delete
   const deleteItem = (id) => {
     const updatedItems = items.filter((currElem) => {
       return currElem.id !== id;
@@ -60,22 +79,25 @@ const ToDo = () => {
             value={inputData}
             onChange={(event) => setInputData(event.target.value)} />
 
-          <i className="fa-solid fa-plus add" onClick={addItem}></i>
+          {
+            itemIdToBeEdit ? <i className="fa-solid fa-pen-to-square update-btn" onClick={addItem}></i> : <i className="fa-solid fa-plus add" onClick={addItem}></i>
+          }
         </div>
         <br />
 
         <div className="showItems">
           {
             items.map((currElem) => {
-              return <>
+              return (
                 <div className="eachItem" key={currElem.id}>
                   <span>{currElem.name}</span>
                   <div className="todo_btn" >
                     {/* <i className="fa-solid fa-pen-to-square " ></i> */}
+                    <i className="fa-solid fa-pen-to-square edit" onClick={() => editItem(currElem.id)}></i>
                     <i className="fa-solid fa-trash delete" onClick={() => deleteItem(currElem.id)}></i>
                   </div>
                 </div>
-              </>
+              )
             })
           }
         </div>
